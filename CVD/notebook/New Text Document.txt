@@ -1,0 +1,8 @@
+test data loss calculate code
+underfit or overfit checking 
+check the graph 
+--------------
+check with the data 
+--------------
+remove shap
+-----------------
