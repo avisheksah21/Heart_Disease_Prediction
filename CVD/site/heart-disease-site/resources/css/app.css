@@ -1,0 +1,189 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+}
+.navbar {
+    background-color: #007bff;
+}
+.navbar-brand, .nav-link {
+    color: white !important;
+}
+.nav-link:hover {
+    color: #d4e6ff !important;
+}
+.hero-section {
+    background: linear-gradient(rgba(0, 123, 255, 0.7), rgba(0, 123, 255, 0.7)), url('https://images.unsplash.com/photo-1576091160550-2173fd1bece7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+.hero-content p {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+.hero-content .btn {
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    transition: transform 0.3s, background-color 0.3s;
+}
+.hero-content .btn:hover {
+    transform: scale(1.05);
+    background-color: #0056b3;
+}
+.wave {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNDQwIDEwMC41Ij48cGF0aCBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjEiIGQ9Ik0wLDEwMEw0OCw4Ni43QzEwMCw3My4zIDE0NCw2MCAyNDAsNDYuN0MyODgsMzMuMyAzMzYsMjAgNDMyLDIwQzUyOCwyMCA1NzYsMzMuMyA2MjQsNDYuN0M3MjAsNjAgNzY4LDczLjMgODY0LDczLjNDOTYwLDczLjMgMTAwOCw2MCAxMTA0LDQ2LjdDMTIwMCwzMy4zIDEyNDgsMjAgMTM0NCwyMEMxNDQwLDIwVjEwMEwwLDEwMFoiPjwvcGF0aD48L3N2Zz4=');
+    background-size: cover;
+}
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+.card {
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.form-section {
+    margin-top: 30px;
+}
+.form-section h5 {
+    color: #007bff;
+}
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+footer {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+.fade-in {
+    animation: fadeIn 1s ease-in;
+}
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* ADDED: Styles for login page */
+.login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.login-container h2 {
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+.form-group input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+.btn-login {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.btn-login:hover {
+    background-color: #0056b3;
+}
+.text-center {
+    text-align: center;
+}
+.text-danger {
+    color: #721c24;
+    font-size: 0.9rem;
+}
+
+
+/* New styles for auth pages */
+.auth-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.auth-container h2 {
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.btn-auth {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.btn-auth:hover {
+    background-color: #0056b3;
+}
+.auth-link {
+    color: #007bff;
+    text-decoration: none;
+}
+.auth-link:hover {
+    text-decoration: underline;
+}
