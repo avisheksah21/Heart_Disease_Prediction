@@ -26,10 +26,10 @@ return new class extends Migration
             $table->float('st_depression');
             $table->string('st_slope');
             $table->integer('num_major_vessels');
-            $table->string('thalassemia');
+            $table->integer('thalassemia');
+            $table->string('model_used');
             $table->string('prediction');
             $table->float('prediction_score');
-            $table->string('model_used');
             $table->float('model_accuracy');
             $table->timestamps();
         });

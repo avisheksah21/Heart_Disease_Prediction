@@ -178,5 +178,37 @@
 
             <button type="submit" class="btn btn-success w-100">Predict</button>
         </form>
+        <div id="result" class="mt-4"></div>
     </div>
+
+    <script>
+        document.getElementById('predictionForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData);
+
+            try {
+                const response = await axios.post('{{ route('predict') }}', data, {
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                    }
+                });
+                const result = response.data;
+                document.getElementById('result').innerHTML = `
+                    <div class="alert alert-info">
+                        <h5>Prediction Result (Model: ${result.model})</h5>
+                        <p><strong>Probability of Heart Disease:</strong> ${(result.probability * 100).toFixed(2)}%</p>
+                        <p><strong>Prediction:</strong> ${result.prediction}</p>
+                    </div>
+                `;
+            } catch (error) {
+                const errorMessage = error.response?.data?.error || 'Prediction failed. Please try again.';
+                document.getElementById('result').innerHTML = `
+                    <div class="alert alert-danger">
+                        <strong>Error:</strong> ${errorMessage}
+                    </div>
+                `;
+            }
+        });
+    </script>
 @endsection
