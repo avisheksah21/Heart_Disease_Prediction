@@ -7,10 +7,8 @@ from sklearn.preprocessing import StandardScaler
 app = Flask(__name__)
 
 MODEL_PATHS = {
-    'CNN': 'models/computer_cnn_model.keras',
+    
     'Transformer': 'models/computer_transformer_model.keras',
-    'LGBMClassifier': 'models/lgbm_model.pkl',
-    'Tuned Transformer': 'models/kaggle_best_cnn_tuned_model.keras'
 }
 SCALER_PATH = 'models/scaler.pkl'
 
@@ -79,7 +77,8 @@ def predict():
         
         return jsonify(result), 200
     
-    except Exception as e:ai
+    except Exception as e:
         return jsonify({'error': str(e)}), 500
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

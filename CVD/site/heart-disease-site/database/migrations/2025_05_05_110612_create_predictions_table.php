@@ -26,7 +26,7 @@ return new class extends Migration
             $table->float('st_depression');
             $table->string('st_slope');
             $table->integer('num_major_vessels');
-            $table->integer('thalassemia');
+            $table->string('thalassemia',50);
             $table->string('model_used');
             $table->string('prediction');
             $table->float('prediction_score');

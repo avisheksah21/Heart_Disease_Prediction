@@ -30,9 +30,8 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/prediction', [PredictionController::class, 'index'])->name('prediction');
-    // Route::post('/predict', [PredictionController::class, 'predict'])->name('predict');
-    Route::get('/predict', [PredictionController::class, 'index'])->name('predict.index');
-Route::post('/predict', [PredictionController::class, 'predict'])->name('predict');
+    Route::get('/predict', [PredictionController::class, 'index'])->name('predict.index'); 
+    Route::post('/predict', [PredictionController::class, 'predict'])->name('predict');
     Route::get('/admin', [AdminController::class, 'index'])->name('admin')->middleware('admin');
 });
 

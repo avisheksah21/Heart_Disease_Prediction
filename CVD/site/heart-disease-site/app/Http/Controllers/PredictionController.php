@@ -102,12 +102,21 @@ class PredictionController extends Controller
                 Prediction::create($predictionData);
 
                 // Return JSON response for the frontend
-                return response()->json([
+                // return response()->json([
+                //     'probability' => $result['probability'],
+                //     'prediction' => $result['prediction'],
+                //     'model' => $result['model'],
+                //     'accuracy' => $modelAccuracies[$validated['model']]
+                // ], 200);
+                $data =[];
+                $data = [
                     'probability' => $result['probability'],
                     'prediction' => $result['prediction'],
                     'model' => $result['model'],
                     'accuracy' => $modelAccuracies[$validated['model']]
-                ], 200);
+                ];
+                
+                return view('result',compact('data'));
             } else {
                 Log::error('Prediction API error: ' . $response->body());
                 return response()->json(['error' => 'Prediction failed'], 500);
