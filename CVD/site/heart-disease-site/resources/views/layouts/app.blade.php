@@ -13,11 +13,16 @@
         <!-- Styles -->
         @vite(['resources/css/app.css'])
     </head>
-    <body>
+    <body class="d-flex flex-column min-vh-100">
         <!-- Navigation Bar -->
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('home') }}">HeartSafe Predictor</a>
+                <a class="navbar-brand" href="{{ route('home') }}">
+                <img src="/images/logo.png" 
+                 alt="HeartSafe Predictor Logo"
+                 height="40" class="d-inline-block align-top me-2">
+                HeartSafe Predictor</a>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -27,7 +32,7 @@
                         <a class="nav-link" href="{{ route('about') }}">About</a>
                         <a class="nav-link" href="{{ route('contact') }}">Contact</a>
                         @auth
-                            <a class="nav-link" href="{{ route('profile') }}">Profile</a>
+                            <a class="nav-link" href="{{ route('profile') }}">History Profile</a>
                             <form method="POST" action="{{ route('logout') }}" class="d-inline">
                                 @csrf
                                 <button type="submit" class="nav-link btn btn-link text-white">Logout</button>
@@ -43,13 +48,13 @@
         </nav>
 
         <!-- Main Content -->
-        <main>
+        <main class="flex-grow-1">
             @yield('content')
         </main>
 
         <!-- Footer -->
-        <footer class="mt-5">
-            <p>© 2025 HeartSafe Predictor | <a href="#" class="text-white">Privacy Policy</a> | <a href="#" class="text-white">Terms of Use</a></p>
+        <footer class="mt-auto">
+            <p>© 2025 HeartSafe Predictor </p>
             @auth
                 @if (Auth::user()->is_admin)
                     <a href="{{ route('admin') }}" class="btn btn-light btn-sm">Admin Dashboard</a>

@@ -179,55 +179,5 @@
             <button type="submit" class="btn btn-success w-100">Predict</button>
         </form>
         <div id="prediction-result" class="mt-4"></div>
-        <div id="error-message" class="mt-4 alert alert-danger hidden"></div>
     </div>
-
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/7bvV+3Z5i5IO2E5SsQWRHl8LlgDoT5tN9bcnMB" crossorigin="anonymous"></script>
-    <script>
-    $(document).ready(function () {
-        $('#predictionForm').on('submit', function (e) {
-            e.preventDefault();
-
-            const formData = new FormData(this);
-            const data = {};
-            formData.forEach((value, key) => {
-                data[key] = value;
-            });
-
-            console.log("Form Data Sent:", data);
-
-            $.ajax({
-                url: '/predict',
-                method: 'POST',
-                data: data,
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function (response) {
-                    console.log("Response Received:", response);
-                    $('#result').html(`
-                        <div class="alert alert-info">
-                            <h5>Prediction Result (Model: ${response.model})</h5>
-                            <p><strong>Probability of Heart Disease:</strong> ${(response.probability * 100).toFixed(2)}%</p>
-                            <p><strong>Prediction:</strong> ${response.prediction}</p>
-                        </div>
-                    `);
-                },
-                error: function (xhr, status, error) {
-                    console.error("XHR Error:", xhr);
-                    console.error("Status:", status);
-                    console.error("Error:", error);
-
-                    const errorMessage = xhr.responseJSON?.error || 'An unexpected error occurred.';
-                    $('#result').html(`
-                        <div class="alert alert-danger">
-                            <strong>Error:</strong> ${errorMessage}
-                        </div>
-                    `);
-                }
-            });
-        });
-    });
-</script> -->
-
 @endsection

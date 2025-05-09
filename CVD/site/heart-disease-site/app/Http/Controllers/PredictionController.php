@@ -100,14 +100,6 @@ class PredictionController extends Controller
                 ]);
 
                 Prediction::create($predictionData);
-
-                // Return JSON response for the frontend
-                // return response()->json([
-                //     'probability' => $result['probability'],
-                //     'prediction' => $result['prediction'],
-                //     'model' => $result['model'],
-                //     'accuracy' => $modelAccuracies[$validated['model']]
-                // ], 200);
                 $data =[];
                 $data = [
                     'probability' => $result['probability'],
@@ -127,52 +119,3 @@ class PredictionController extends Controller
         }
     }
 }
-
-//         try {
-//             // Send POST request to the Flask API
-//             $response = Http::post('http://localhost:5000/predict', $validated);
-
-//             // Check if the request was successful
-//             if ($response->successful()) {
-//                 return response()->json($response->json(), 200);
-//             } else {
-//                 Log::error('Prediction API error: ' . $response->body());
-//                 return response()->json(['error' => 'Prediction failed'], 500);
-//             }
-//         } catch (\Exception $e) {
-//             Log::error('Prediction request failed: ' . $e->getMessage());
-//             return response()->json(['error' => 'Internal server error'], 500);
-//         }
-//     }
-// }
-
-
-//         // Mock prediction (replace with actual model integration)
-//         $prediction = rand(0, 1) ? 'Disease' : 'No Disease';
-//         $score = rand(60, 100) + (rand(0, 99) / 100); // Random score between 60-100
-
-//         $modelAccuracies = [
-//             'CNN' => 96.08,
-//             'Transformer' => 96.08,
-//             'LGBMClassifier' => 95.00,
-//             'Tuned Transformer' => 98.04
-//         ];
-
-//         $predictionData = array_merge($validated, [
-//             'user_id' => Auth::id(),
-//             'prediction' => $prediction,
-//             'prediction_score' => $score,
-//             'model_used' => $validated['model'],
-//             'model_accuracy' => $modelAccuracies[$validated['model']],
-//         ]);
-
-//         Prediction::create($predictionData);
-
-//         return view('result', [
-//             'prediction' => $prediction,
-//             'score' => $score,
-//             'model' => $validated['model'],
-//             'accuracy' => $modelAccuracies[$validated['model']],
-//         ]);
-//     }
-// }

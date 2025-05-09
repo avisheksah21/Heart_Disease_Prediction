@@ -11,7 +11,7 @@
                         <th>Age</th>
                         <th>Sex</th>
                         <th>Prediction</th>
-                        <th>Score</th>
+                        <th>Disease Probability</th>
                         <th>Model</th>
                     </tr>
                 </thead>

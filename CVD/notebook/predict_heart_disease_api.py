@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 MODEL_PATHS = {
     'CNN': 'models/computer_cnn_model.keras',
-    'Transformer': 'models/kaggle_transformer_model.keras',
+    'Transformer': 'models/computer_transformer_model.keras',
     'LGBMClassifier': 'models/lgbm_model.pkl',
     'Tuned Transformer': 'models/kaggle_best_cnn_tuned_model.keras',
 }

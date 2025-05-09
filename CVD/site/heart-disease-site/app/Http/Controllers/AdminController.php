@@ -9,7 +9,11 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $predictions = Prediction::with('user')->get();
-        return view('admin', compact('predictions'));
+        // Fetch all predictions in descending order by creation date
+        $predictions_data = Prediction::orderBy('created_at', 'desc')->get();
+        // Pass the predictions to the view
+        // dd($predictions_data); 
+
+        return view('admin.dashboard', compact('predictions_data'));
     }
 }
