@@ -8,6 +8,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+/**
+ * Class User
+ *
+ * Represents a user in the application.
+ * This class extends the base Authenticatable class provided by Laravel
+ * and includes traits for factory creation, notifications, and API tokens.
+ */
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -47,8 +54,13 @@ class User extends Authenticatable
         ];
     }
 
+    /**
+     * Get the predictions associated with the user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function predictions()
-{
-    return $this->hasMany(Prediction::class);
-}
+    {
+        return $this->hasMany(Prediction::class);
+    }
 }

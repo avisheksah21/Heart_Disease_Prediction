@@ -59,6 +59,11 @@ class ProfileController extends Controller
         return Redirect::to('/');
     }
 
+    /**
+     * Display the user's profile with their predictions.
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
     public function index()
     {
         $predictions = Prediction::where('user_id', Auth::id())->get();

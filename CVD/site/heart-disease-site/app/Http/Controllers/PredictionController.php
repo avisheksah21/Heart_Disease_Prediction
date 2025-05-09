@@ -5,16 +5,31 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Auth; // ADDED: Import Auth facade
-use App\Models\Prediction; // ADDED: Import Prediction model
+use Illuminate\Support\Facades\Auth;
+use App\Models\Prediction;
 
+/**
+ * Controller for handling heart disease predictions.
+ */
 class PredictionController extends Controller
 {
+    /**
+     * Display the prediction form view.
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
     public function index()
     {
         return view('prediction');
     }
 
+    /**
+     * Handle the prediction request, send data to the prediction API,
+     * save the result, and display the result view.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Contracts\View\View
+     */
     public function predict(Request $request)
     {
         $validated = $request->validate([
@@ -69,28 +84,23 @@ class PredictionController extends Controller
         ];
 
         try {
-            // Prepare data for Flask API
+            // Prepare data for API
             $apiData = [
-                'input' => array_values($numericData), // Send as list in correct order
+                'input' => array_values($numericData),
                 'model' => $validated['model']
             ];
 
-            // Send POST request to the Flask API
+            // Send POST request 
             $response = Http::post('http://localhost:5000/predict', $apiData);
 
-            // Check if the request was successful
             if ($response->successful()) {
                 $result = $response->json();
-
-                // Model accuracies (same as in the original code)
                 $modelAccuracies = [
                     'CNN' => 96.08,
                     'Transformer' => 96.08,
                     'LGBMClassifier' => 95.00,
                     'Tuned Transformer' => 98.04
                 ];
-
-                // Store prediction in the database
                 $predictionData = array_merge($validated, [
                     'user_id' => Auth::id(),
                     'prediction' => $result['prediction'] === 'Heart Disease' ? 'Disease' : 'No Disease',
@@ -100,15 +110,15 @@ class PredictionController extends Controller
                 ]);
 
                 Prediction::create($predictionData);
-                $data =[];
+                $data = [];
                 $data = [
                     'probability' => $result['probability'],
                     'prediction' => $result['prediction'],
                     'model' => $result['model'],
                     'accuracy' => $modelAccuracies[$validated['model']]
                 ];
-                
-                return view('result',compact('data'));
+
+                return view('result', compact('data'));
             } else {
                 Log::error('Prediction API error: ' . $response->body());
                 return response()->json(['error' => 'Prediction failed'], 500);
