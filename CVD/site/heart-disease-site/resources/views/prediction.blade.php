@@ -189,7 +189,7 @@
                     <select class="form-control @error('model') is-invalid @enderror" id="model" name="model" required>
                         <option value="">Select Model</option>
                         <option value="CNN" {{ old('model') == 'CNN' ? 'selected' : '' }}>CNN</option>
-                        <option value="Transformer" {{ old('model') == 'Transformer' ? 'selected' : '' }}>Transformer</option>
+                        <option value="Transformer" {{ old('model') == 'Transformer' ? 'selected' : '' }}>Transformer (Recommended)</option>
                         <option value="LGBMClassifier" {{ old('model') == 'LGBMClassifier' ? 'selected' : '' }}>LGBMClassifier
                         </option>
                         <option value="Tuned Transformer" {{ old('model') == 'Tuned Transformer' ? 'selected' : '' }}>Tuned
