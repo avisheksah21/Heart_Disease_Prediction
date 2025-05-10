@@ -34,8 +34,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/prediction', [PredictionController::class, 'index'])->name('prediction');
     Route::get('/predict', [PredictionController::class, 'index'])->name('predict.index');
     Route::post('/predict', [PredictionController::class, 'predict'])->name('predict');
-    // Define the route for the admin dashboard.
-    // This route should ideally be protected by an additional admin middleware
+});
+
+Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('admin');
 });
 

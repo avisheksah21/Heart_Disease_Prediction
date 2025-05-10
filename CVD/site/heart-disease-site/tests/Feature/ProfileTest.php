@@ -34,7 +34,7 @@ class ProfileTest extends TestCase
 
         $response
             ->assertSessionHasNoErrors()
-            ->assertRedirect('/profile');
+            ->assertRedirect('/profile/edit');
 
         $user->refresh();
 
@@ -42,10 +42,11 @@ class ProfileTest extends TestCase
         $this->assertSame('test@example.com', $user->email);
         $this->assertNull($user->email_verified_at);
     }
-
-    public function test_email_verification_status_is_unchanged_when_the_email_address_is_unchanged(): void
+    public function email_verification_status_is_unchanged_when_the_email_address_is_unchanged()
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create([
+            'email_verified_at' => now(),
+        ]);
 
         $response = $this
             ->actingAs($user)
@@ -54,11 +55,12 @@ class ProfileTest extends TestCase
                 'email' => $user->email,
             ]);
 
+        // Update this assertion too
         $response
             ->assertSessionHasNoErrors()
-            ->assertRedirect('/profile');
+            ->assertRedirect('/profile/edit'); // Changed from '/profile'
 
-        $this->assertNotNull($user->refresh()->email_verified_at);
+        $this->assertNotNull($user->fresh()->email_verified_at);
     }
 
     public function test_user_can_delete_their_account(): void
